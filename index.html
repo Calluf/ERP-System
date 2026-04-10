@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nexus ERP Dashboard">
+    <meta name="author" content="Calluf">
+    <title>Nexus ERP Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header { background: #4CAF50; color: white; padding: 1em; text-align: center; }
+        .container { padding: 20px; }
+        .card { background: #f4f4f4; border: 1px solid #ccc; border-radius: 5px; padding: 15px; margin: 10px 0; }
+        @media (max-width: 600px) {
+            .card { font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Nexus ERP Dashboard</h1>
+    </header>
+    <div class="container">
+        <div class="card">
+            <h2>Welcome to the ERP Dashboard</h2>
+            <p>Current Date and Time: <span id="current-time"></span></p>
+        </div>
+        <div class="card">
+            <h3>Interactive Features</h3>
+            <button id="loadDataBtn">Load Data</button>
+            <div id="dataOutput"></div>
+        </div>
+    </div>
+    <script>
+        // Function to update the current time
+        function updateCurrentTime() {
+            const now = new Date();
+            const utcDateTime = now.toUTCString();
+            document.getElementById('current-time').innerText = utcDateTime;
+        }
+        // Function to load sample data
+        document.getElementById('loadDataBtn').addEventListener('click', function() {
+            document.getElementById('dataOutput').innerText = 'Sample data loaded!';
+        });
+        updateCurrentTime();
+        setInterval(updateCurrentTime, 1000);
+    </script>
+</body>
+</html>
