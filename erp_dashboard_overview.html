@@ -3,42 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus ERP Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <title>ERP Dashboard Overview</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        header { background: #007BFF; color: white; padding: 10px 20px; text-align: center; }
+        .dashboard { display: flex; justify-content: space-around; flex-wrap: wrap; }
+        .section { margin: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 8px; width: 300px; }
+        footer { text-align: center; padding: 10px; background: #f8f9fa; margin-top: 20px; }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Nexus ERP Dashboard</h1>
+        <h1>ERP Dashboard Overview</h1>
+        <select id="companySwitcher">
+            <option value="company1">Company 1</option>
+            <option value="company2">Company 2</option>
+            <option value="company3">Company 3</option>
+        </select>
     </header>
-    <main>
-        <section id="kpis">
+    <div class="dashboard">
+        <div class="section" id="kpiSection">
             <h2>Key Performance Indicators (KPIs)</h2>
-            <p>Displaying crucial business metrics...</p>
-        </section>
-        <section id="sales-funnel">
+            <div id="kpiData"></div>
+        </div>
+        <div class="section" id="salesFunnelSection">
             <h2>Sales Funnel</h2>
-            <p>Visual representation of sales pipeline...</p>
-        </section>
-        <section id="activity-feed">
-            <h2>Activity Feed</h2>
-            <p>Latest activities and updates...</p>
-        </section>
-        <section id="projects">
+            <div id="salesFunnelData"></div>
+        </div>
+        <div class="section" id="activitiesSection">
+            <h2>Activities</h2>
+            <div id="activitiesData"></div>
+        </div>
+        <div class="section" id="projectsSection">
             <h2>Projects</h2>
-            <p>Overview of ongoing projects...</p>
-        </section>
-        <section id="cash-flow">
+            <div id="projectsData"></div>
+        </div>
+        <div class="section" id="cashFlowSection">
             <h2>Cash Flow</h2>
-            <p>Insights into cash flow management...</p>
-        </section>
-        <section id="agenda">
+            <div id="cashFlowData"></div>
+        </div>
+        <div class="section" id="agendaSection">
             <h2>Agenda</h2>
-            <p>Upcoming events and appointments...</p>
-        </section>
-    </main>
+            <div id="agendaData"></div>
+        </div>
+    </div>
     <footer>
-        <p>&copy; 2026 Nexus ERP</p>
+        <p>© 2026 ERP Dashboard</p>
     </footer>
+    <script>
+        const companySwitcher = document.getElementById('companySwitcher');
+        const kpiData = document.getElementById('kpiData');
+        const salesFunnelData = document.getElementById('salesFunnelData');
+        const activitiesData = document.getElementById('activitiesData');
+        const projectsData = document.getElementById('projectsData');
+        const cashFlowData = document.getElementById('cashFlowData');
+        const agendaData = document.getElementById('agendaData');
+
+        function fetchDataForCompany(company) {
+            // Here you would typically make an API call to fetch data for the selected company
+            // For demonstration, we will simulate some static data
+            kpiData.innerHTML = `<p>Sales: $10000<br>Profit: $2000<br>Growth: 5%</p>`;
+            salesFunnelData.innerHTML = `<p>Leads: 200<br>Opportunities: 50<br>Deals Won: 10</p>`;
+            activitiesData.innerHTML = `<p>Meeting with client A<br>Proposal sent to client B</p>`;
+            projectsData.innerHTML = `<p>Project X - In Progress<br>Project Y - Completed</p>`;
+            cashFlowData.innerHTML = `<p>Incoming: $20000<br>Outgoing: $15000</p>`;
+            agendaData.innerHTML = `<p>Monday: Team Meeting<br>Tuesday: Project Review</p>`;
+        }
+
+        companySwitcher.addEventListener('change', function() {
+            fetchDataForCompany(this.value);
+        });
+
+        // Initial load for the first company
+        fetchDataForCompany(companySwitcher.value);
+    </script>
 </body>
 </html>
